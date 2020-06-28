@@ -1,3 +1,4 @@
+import platform
 import random
 import string
 import threading
@@ -6,12 +7,18 @@ from os import system
 
 import requests
 
+if platform.system() == "Windows":  # checking OS
+    title = "windows"
+else:
+    title = "linux"
 
 def randomName(size=10, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
 
 def randomPassword(size=14, chars=string.ascii_letters + string.digits):
     return ''.join(random.choice(chars) for i in range(size))
+
+
 
 global maxi
 global created
@@ -50,7 +57,9 @@ def creator():
     global created
     global errors
     while maxi > created:
-        system("title "+ f"Spotify Account Creator by KevinLage https://github.com/KevinLage/Spotify-Account-Creator Created: {created}/{maxi} Errors:{errors}")
+        if title == "windows":
+            system("title "+ f"Spotify Account Creator by KevinLage https://github.com/KevinLage/Spotify-Account-Creator Created: {created}/{maxi} Errors:{errors}")
+            
         s = requests.session()
 
         email = randomName()
@@ -79,7 +88,8 @@ def creator():
             if '{"status":1,"' in r.text:
                 open("created.txt", "a+").write(email + "@gmail.com:" + password + "\n")
                 created += 1
-                system("title "+ f"Spotify Account Creator by Josh https://www.nulled.to/user/2089047-  Created: {created}/{maxi} Errors:{errors}")
+                if title == "windows":
+                    system("title "+ f"Spotify Account Creator by KevinLage https://github.com/KevinLage/Spotify-Account-Creator Created: {created}/{maxi} Errors:{errors}")
             else:
                 errors += 1
         except:
