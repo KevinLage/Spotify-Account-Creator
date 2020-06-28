@@ -6,4 +6,4 @@ Python Setup:
 3. Open your terminal and enter "pip install -r requirements.txt"
 4. Start the python file and enter the amount of accounts you need and how many threads you want.
 
-If you dont want to install python simply download the .exe from [Releases](https://github.com/KevinLage/Edu-Account-creator/releases)
+If you dont want to install python simply download the .exe from [Releases](https://github.com/KevinLage/Spotify-Account-Creator/releases)
